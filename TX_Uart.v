@@ -75,16 +75,17 @@ module TX_Uart
         
         data: begin
            tx_next = b_reg[0];
-           if(s_reg == 15) begin
-              s_next = 0;
-              b_next = b_reg >> 1;
-              if(n_reg == (D_BIT-1))
-                 state_next = stop;
-              else
-                 n_next = n_reg+1;
-           end // end_if
-           else
-              s_next = s_reg+1;
+           if(i_s_tick)
+               if(s_reg == 15) begin
+                  s_next = 0;
+                  b_next = b_reg >> 1;
+                  if(n_reg == (D_BIT-1))
+                     state_next = stop;
+                  else
+                     n_next = n_reg+1;
+               end // end_if
+               else
+                  s_next = s_reg+1;
         end // end_data
         
         stop: begin

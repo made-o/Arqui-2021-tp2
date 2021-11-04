@@ -24,12 +24,12 @@ module RX_Uart
    
 // body:
 // FSMD state & data registers:
-   always @(posedge i_clk, posedge i_reset)
+   always @(posedge i_clk)
      if(i_reset) begin
         state_reg <= idle;
         s_reg <= 0;
         n_reg <= 0;
-        b_reg <= 0;
+        b_reg <='d0;
      end //end_if
      else begin
         state_reg <= state_next;
