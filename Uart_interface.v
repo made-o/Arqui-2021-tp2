@@ -8,7 +8,7 @@ module Uart_interface #(
         input   wire            rx_done,
         input   wire            reset,   
         input   wire            clk,
-        input   wire            o_tx_done_tick,
+        input   wire            i_tx_done_tick,
         
         output  wire [DBIT-1:0] o_result,   //  Resultado de la ALU
         output  reg             tx_start
@@ -81,7 +81,7 @@ module Uart_interface #(
             procesando_resultado:
                 begin
                     tx_start = 1'b1;
-                    if(o_tx_done_tick)
+                    if(i_tx_done_tick)
                         begin
                             state_next = esperando_op1;
                             tx_start   = 1'b0;

@@ -64,6 +64,6 @@ module Modulo_Uart_Top#(
         .i_data         (data_line_rtoi),
         .o_result       (data_line_itot),
         .tx_start       (tx_start),
-        .o_tx_done_tick (tx_done)
+        .i_tx_done_tick (tx_done)
     );
 endmodule
