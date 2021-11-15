@@ -32,9 +32,9 @@ module Tb_Interface_Uart();
 
       i_reset           =   1'b0;
 
-      // transmito a (20)
+      // transmito A (20)
       rx_next = 1'b0;
-      #52216
+        #52216 // (163 * 16 * 2) → (mod-163 * 16 de sobremuestreo * 2 ciclo reloj)
       rx_next = 1'b0;
       #52216
       rx_next = 1'b0;
@@ -107,7 +107,7 @@ module Tb_Interface_Uart();
      assign rx = rx_next;
      
     always begin
-      #10
+      #10 // Un período cada #20
       i_clock = ~i_clock;
     end
     
